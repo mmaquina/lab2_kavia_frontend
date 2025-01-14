@@ -1,1 +1,3 @@
-# lab2_nav_bar_figma-navigation-bar-container-45454-45174-pre_prod
+# Project Repository
+
+This is the initial README file for the project.
