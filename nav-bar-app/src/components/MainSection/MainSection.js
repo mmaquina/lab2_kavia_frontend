@@ -6,12 +6,31 @@ const DealCard = styled(Card)(({ theme }) => ({
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  minHeight: { xs: 340, sm: 380 },
+  minHeight: { xs: 360, sm: 400 },
   cursor: 'pointer',
   transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+  backgroundColor: theme.palette.background.paper,
   '&:hover': {
     transform: 'translateY(-8px)',
+    boxShadow: theme.shadows[12],
+  },
+  '&:focus-visible': {
+    outline: `3px solid ${theme.palette.primary.main}`,
+    outlineOffset: '2px',
     boxShadow: theme.shadows[8],
+  },
+  '&:active': {
+    transform: 'translateY(-4px)',
+    boxShadow: theme.shadows[8],
+  },
+  '@media (prefers-reduced-motion: reduce)': {
+    transition: 'none',
+    '&:hover': {
+      transform: 'none',
+    },
+    '&:active': {
+      transform: 'none',
+    },
   },
 }));
 
@@ -30,34 +49,42 @@ const DealDescription = styled(Typography)(({ theme }) => ({
   letterSpacing: '0.1px',
 }));
 
+// Fallback images for each category
+const fallbackImages = {
+  electronics: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=500',
+  fashion: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=500',
+  home: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=500',
+  kitchen: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=500',
+};
+
 // Mock data for initial display
 const mockDeals = [
   {
     id: 1,
     title: 'Electronics Super Sale',
     description: 'Up to 50% off on premium electronics and gadgets',
-    image: '/images/categories/electronics.jpg',
+    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=500',
     category: 'electronics',
   },
   {
     id: 2,
     title: 'Fashion Week Special',
     description: 'Designer brands at unbeatable prices',
-    image: '/images/categories/fashion.jpg',
+    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=500',
     category: 'fashion',
   },
   {
     id: 3,
     title: 'Home & Living Deals',
     description: 'Transform your space with amazing discounts',
-    image: '/images/categories/home.jpg',
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500',
     category: 'home',
   },
   {
     id: 4,
     title: 'Kitchen Essentials',
     description: 'Premium cookware and appliances on sale',
-    image: '/images/categories/kitchen.jpg',
+    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=500',
     category: 'kitchen',
   },
 ];
@@ -69,8 +96,12 @@ const handleDealClick = (deal) => {
 
 // PUBLIC_INTERFACE
 const MainSection = () => {
+  const handleImageError = (event, category) => {
+    event.target.src = fallbackImages[category];
+    event.target.onerror = null; // Prevent infinite loop if fallback also fails
+  };
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 3, sm: 4 }, mt: { xs: 1, sm: 2 } }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 4, sm: 5 }, mt: { xs: 2, sm: 3 } }}>
       <Typography
         variant="h5"
         component="h1"
@@ -98,16 +129,42 @@ const MainSection = () => {
               onClick={() => handleDealClick(deal)}
             >
               <CardMedia
-                component="img"
-                height="180"
-                image={deal.image}
-                alt={deal.title}
-                sx={{
-                  objectFit: 'cover',
+                component="div"
+                sx={({ palette }) => ({
+                  position: 'relative',
+                  paddingTop: '56.25%', // 16:9 aspect ratio
+                  overflow: 'hidden',
                   borderBottom: '1px solid',
                   borderColor: 'divider',
-                }}
-              />
+                  backgroundColor: palette.grey[100],
+                  '& img': {
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.3s ease-in-out',
+                  },
+                  '&:hover img': {
+                    transform: 'scale(1.05)',
+                  },
+                  '@media (prefers-reduced-motion: reduce)': {
+                    '& img': {
+                      transition: 'none',
+                    },
+                    '&:hover img': {
+                      transform: 'none',
+                    },
+                  },
+                })}
+              >
+                <img
+                  src={deal.image}
+                  alt={`${deal.title} - ${deal.category} deal`}
+                  onError={(e) => handleImageError(e, deal.category)}
+                />
+              </CardMedia>
               <CardContent sx={{ flexGrow: 1, p: { xs: 1.5, sm: 2 } }}>
                 <DealTitle variant="h5" component="h2">
                   {deal.title}
