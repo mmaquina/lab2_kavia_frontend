@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Card, CardContent, CardMedia, Typography, Container, Box } from '@mui/material';
+import { Grid, Card, CardContent, CardMedia, Typography, Container } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const DealCard = styled(Card)(({ theme }) => ({
@@ -7,10 +7,11 @@ const DealCard = styled(Card)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   minHeight: { xs: 340, sm: 380 },
-  transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+  cursor: 'pointer',
+  transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
   '&:hover': {
-    transform: 'translateY(-4px)',
-    boxShadow: theme.shadows[4],
+    transform: 'translateY(-8px)',
+    boxShadow: theme.shadows[8],
   },
 }));
 
@@ -33,29 +34,38 @@ const DealDescription = styled(Typography)(({ theme }) => ({
 const mockDeals = [
   {
     id: 1,
-    title: 'Special Deal 1',
-    description: 'Amazing offer on electronics',
-    image: 'https://via.placeholder.com/300x200',
+    title: 'Electronics Super Sale',
+    description: 'Up to 50% off on premium electronics and gadgets',
+    image: '/images/categories/electronics.jpg',
+    category: 'electronics',
   },
   {
     id: 2,
-    title: 'Special Deal 2',
-    description: 'Exclusive fashion deals',
-    image: 'https://via.placeholder.com/300x200',
+    title: 'Fashion Week Special',
+    description: 'Designer brands at unbeatable prices',
+    image: '/images/categories/fashion.jpg',
+    category: 'fashion',
   },
   {
     id: 3,
-    title: 'Special Deal 3',
-    description: 'Home decor savings',
-    image: 'https://via.placeholder.com/300x200',
+    title: 'Home & Living Deals',
+    description: 'Transform your space with amazing discounts',
+    image: '/images/categories/home.jpg',
+    category: 'home',
   },
   {
     id: 4,
-    title: 'Special Deal 4',
-    description: 'Kitchen essentials offer',
-    image: 'https://via.placeholder.com/300x200',
+    title: 'Kitchen Essentials',
+    description: 'Premium cookware and appliances on sale',
+    image: '/images/categories/kitchen.jpg',
+    category: 'kitchen',
   },
 ];
+
+const handleDealClick = (deal) => {
+  console.log(`Clicked deal: ${deal.title} in category: ${deal.category}`);
+  // TODO: Implement navigation or modal display for deal details
+};
 
 // PUBLIC_INTERFACE
 const MainSection = () => {
@@ -83,7 +93,10 @@ const MainSection = () => {
             md={4}     // 3 cards per row on medium devices
             lg={3}     // 4 cards per row on large devices
           >
-            <DealCard data-testid="deal-card">
+            <DealCard 
+              data-testid="deal-card"
+              onClick={() => handleDealClick(deal)}
+            >
               <CardMedia
                 component="img"
                 height="180"
