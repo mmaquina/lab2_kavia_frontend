@@ -1,0 +1,171 @@
+{
+  "products": [
+    {
+      "id": "P001",
+      "name": "Ultra HD Smart TV",
+      "price": 799.99,
+      "description": "55-inch 4K Ultra HD Smart LED TV with HDR support and built-in streaming apps",
+      "category": "Electronics",
+      "subcategory": "Televisions",
+      "stock": 25,
+      "images": [
+        "https://example.com/images/tv1.jpg",
+        "https://example.com/images/tv2.jpg",
+        "https://example.com/images/tv3.jpg"
+      ],
+      "videos": [
+        "https://example.com/videos/tv-demo.mp4"
+      ],
+      "specifications": {
+        "screen_size": "55 inches",
+        "resolution": "3840 x 2160",
+        "refresh_rate": "60Hz",
+        "hdmi_ports": 4,
+        "smart_features": ["Netflix", "Prime Video", "YouTube"]
+      },
+      "ratings": {
+        "average": 4.5,
+        "total_reviews": 128,
+        "five_star": 75,
+        "four_star": 38,
+        "three_star": 10,
+        "two_star": 3,
+        "one_star": 2
+      },
+      "created_at": "2023-01-15T08:00:00Z",
+      "updated_at": "2023-06-20T15:30:00Z"
+    },
+    {
+      "id": "P002",
+      "name": "Professional Laptop",
+      "price": 1299.99,
+      "description": "15.6-inch Professional Laptop with Intel Core i7, 16GB RAM, and 512GB SSD",
+      "category": "Electronics",
+      "subcategory": "Laptops",
+      "stock": 15,
+      "images": [
+        "https://example.com/images/laptop1.jpg",
+        "https://example.com/images/laptop2.jpg"
+      ],
+      "specifications": {
+        "processor": "Intel Core i7-12700H",
+        "ram": "16GB DDR4",
+        "storage": "512GB NVMe SSD",
+        "display": "15.6-inch FHD IPS",
+        "graphics": "NVIDIA RTX 3060 6GB"
+      },
+      "ratings": {
+        "average": 4.8,
+        "total_reviews": 89,
+        "five_star": 65,
+        "four_star": 20,
+        "three_star": 3,
+        "two_star": 1,
+        "one_star": 0
+      },
+      "created_at": "2023-02-10T10:15:00Z",
+      "updated_at": "2023-06-18T09:45:00Z"
+    },
+    {
+      "id": "P003",
+      "name": "Wireless Noise-Cancelling Headphones",
+      "price": 249.99,
+      "description": "Premium wireless headphones with active noise cancellation and 30-hour battery life",
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "stock": 50,
+      "images": [
+        "https://example.com/images/headphones1.jpg",
+        "https://example.com/images/headphones2.jpg"
+      ],
+      "videos": [
+        "https://example.com/videos/headphones-demo.mp4"
+      ],
+      "specifications": {
+        "battery_life": "30 hours",
+        "bluetooth_version": "5.0",
+        "noise_cancellation": "Active",
+        "driver_size": "40mm",
+        "frequency_response": "20Hz-20kHz"
+      },
+      "ratings": {
+        "average": 4.6,
+        "total_reviews": 256,
+        "five_star": 180,
+        "four_star": 50,
+        "three_star": 20,
+        "two_star": 4,
+        "one_star": 2
+      },
+      "created_at": "2023-03-05T14:20:00Z",
+      "updated_at": "2023-06-15T11:10:00Z"
+    },
+    {
+      "id": "P004",
+      "name": "Smart Fitness Watch",
+      "price": 199.99,
+      "description": "Advanced fitness tracker with heart rate monitoring, GPS, and sleep tracking",
+      "category": "Wearables",
+      "subcategory": "Fitness Trackers",
+      "stock": 75,
+      "images": [
+        "https://example.com/images/watch1.jpg",
+        "https://example.com/images/watch2.jpg"
+      ],
+      "specifications": {
+        "display": "1.4-inch AMOLED",
+        "water_resistance": "5ATM",
+        "battery_life": "7 days",
+        "sensors": ["Heart Rate", "GPS", "Accelerometer"],
+        "compatibility": ["iOS", "Android"]
+      },
+      "ratings": {
+        "average": 4.7,
+        "total_reviews": 312,
+        "five_star": 220,
+        "four_star": 70,
+        "three_star": 15,
+        "two_star": 5,
+        "one_star": 2
+      },
+      "created_at": "2023-04-12T09:30:00Z",
+      "updated_at": "2023-06-19T16:45:00Z"
+    },
+    {
+      "id": "P005",
+      "name": "Gaming Console",
+      "price": 499.99,
+      "description": "Next-generation gaming console with 4K gaming, ray tracing, and 1TB storage",
+      "category": "Gaming",
+      "subcategory": "Consoles",
+      "stock": 10,
+      "images": [
+        "https://example.com/images/console1.jpg",
+        "https://example.com/images/console2.jpg",
+        "https://example.com/images/console3.jpg"
+      ],
+      "videos": [
+        "https://example.com/videos/console-trailer.mp4",
+        "https://example.com/videos/gameplay-demo.mp4"
+      ],
+      "specifications": {
+        "storage": "1TB NVMe SSD",
+        "resolution": "4K",
+        "frame_rate": "120fps",
+        "ray_tracing": true,
+        "hdmi": "HDMI 2.1"
+      },
+      "ratings": {
+        "average": 4.9,
+        "total_reviews": 450,
+        "five_star": 400,
+        "four_star": 40,
+        "three_star": 8,
+        "two_star": 1,
+        "one_star": 1
+      },
+      "created_at": "2023-05-01T12:00:00Z",
+      "updated_at": "2023-06-20T10:15:00Z"
+    }
+  ]
+}
