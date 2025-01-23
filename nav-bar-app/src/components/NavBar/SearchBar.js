@@ -1,73 +1,68 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  TextField,
-  IconButton,
-  Paper,
-  useTheme,
-  useMediaQuery,
-  InputAdornment,
-} from '@mui/material';
+import { TextField, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 // PUBLIC_INTERFACE
-const SearchBar = () => {
+const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    // Handle search functionality here
-    console.log('Searching for:', searchTerm);
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    if (onSearch) {
+      onSearch(value);
+    }
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSearch}
-      sx={{
-        width: isMobile ? '100%' : 300,
-        m: 1,
-      }}
-    >
-      <TextField
-        fullWidth
-        size="small"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        variant="outlined"
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon color="inherit" />
-            </InputAdornment>
-          ),
-          sx: {
-            color: 'inherit',
-            backgroundColor: 'rgba(255, 255, 255, 0.15)',
-            borderRadius: theme.shape.borderRadius,
-            transition: 'all 0.2s ease-in-out',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.25)',
-            },
-            '& .MuiOutlinedInput-notchedOutline': {
-              border: 'none',
-            },
-            '&:hover .MuiOutlinedInput-notchedOutline': {
-              border: 'none',
-            },
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-            },
+    <TextField
+      size="small"
+      variant="outlined"
+      placeholder="Search..."
+      value={searchTerm}
+      onChange={handleChange}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        ),
+        sx: {
+          backgroundColor: 'rgba(255, 255, 255, 0.15)',
+          borderRadius: 1,
+          '&:hover': {
+            backgroundColor: 'rgba(255, 255, 255, 0.25)',
           },
-        }}
-        inputProps={{
-          'aria-label': 'search',
-        }}
-      />
-    </Box>
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'rgba(255, 255, 255, 0.3)',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'rgba(255, 255, 255, 0.5)',
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'rgba(255, 255, 255, 0.7)',
+          },
+        }
+      }}
+      sx={{
+        width: { xs: '100%', sm: '200px', md: '300px' },
+        transition: (theme) => theme.transitions.create('width', {
+          duration: theme.transitions.duration.standard,
+        }),
+        '& input': {
+          color: 'white',
+          '&::placeholder': {
+            color: 'rgba(255, 255, 255, 0.7)',
+            opacity: 1,
+          },
+        },
+        '& .MuiInputBase-root': {
+          transition: (theme) => theme.transitions.create(['background-color', 'border-color'], {
+            duration: theme.transitions.duration.standard,
+          }),
+        }
+      }}
+    />
   );
 };
 
